@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://pkmbilal.github.io/",
+    origin: "https://pkmbilal.github.io",
     credentials: true,
   })
 );
