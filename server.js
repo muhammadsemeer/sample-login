@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3001
+const db = require("./config/connection");
 
-app.listen(PORT,()=> {
-    console.log(`Server Running On ${PORT}`);
-})
+// Database Connection
+db.connect(() => {
+  console.log("Database Connected");
+});
+// Server setup
+const PORT = process.env.PORT || 3001;
+app.listen(PORT);
