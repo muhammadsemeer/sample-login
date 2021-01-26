@@ -3,7 +3,8 @@ const app = express();
 const db = require("./config/connection");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-var cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 // Database Connection
 db.connect((err) => {
@@ -15,6 +16,7 @@ db.connect((err) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(cors());
 
 //Routes
 app.post("/signup", async (req, res) => {
