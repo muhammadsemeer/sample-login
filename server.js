@@ -44,6 +44,8 @@ app.post("/signup", async (req, res) => {
         res.cookie("userToken", token, {
           httpOnly: true,
           expires: new Date(Date.now() + 5184000000),
+          sameSite: "none",
+          secure: process.env.NODE_ENV === "production" ? true : false,
         });
         res.json({ login: true, user: response.ops[0] });
       });
@@ -68,6 +70,8 @@ app.post("/login", async (req, res) => {
         res.cookie("userToken", token, {
           httpOnly: true,
           expires: new Date(Date.now() + 5184000000),
+          sameSite: "none",
+          secure: process.env.NODE_ENV === "production" ? true : false,
         });
         res.json({ login: true, user: emailFound });
       } else {
